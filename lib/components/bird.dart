@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -75,5 +77,12 @@ class Bird extends SpriteGroupComponent<BirdMovement>
     game.isHit = true;
     gameRef.overlays.add('gameOver');
     gameRef.pauseEngine();
+
+    window.parent?.postMessage('score:your_score_value', '*');
+
+//     if (window.flutter_injected) {
+//   FlutterChannel.postMessage(score.toString());
+//   FlutterChannel.postMessage('gameOver');
+// }
   }
 }
